@@ -20,6 +20,7 @@ const DeleteLink = props => {
   );
 };
 
+//Keep as class
 class App extends React.Component {
   constructor(props) {
     super(props);
