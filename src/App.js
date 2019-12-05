@@ -1,26 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import Auth from './components/auth/auth.js';
+import Login from './components/auth/login.js';
+import LoginContext from './components/auth/context.js';
+
+const EditLink = props => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Auth capability="update">
+      <span>Edit</span>
+    </Auth>
   );
+};
+
+const DeleteLink = props => {
+  return (
+    <Auth capability="delete">
+      <span>Delete</span>
+    </Auth>
+  );
+};
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <LoginContext>
+        <Login />
+        <hr />
+        <EditLink />
+        <DeleteLink />
+      </LoginContext>
+    );
+  }
 }
 
 export default App;
