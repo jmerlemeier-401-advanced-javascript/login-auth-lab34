@@ -2,7 +2,7 @@ import React from 'react';
 import cookie from 'react-cookies';
 import jwt from 'jsonwebtoken';
 
-// const API = process.env.REACT_APP_API;
+const API = process.env.REACT_APP_API;
 
 const testLogins = {
   testAdmin: process.env.REACT_APP_ADMIN_TOKEN || '',
@@ -30,7 +30,7 @@ class LoginProvider extends React.Component {
       this.validateToken(testLogins[username]);
     }
     else {
-      fetch('http://api-js401.herokuapp.com', {
+      fetch(`${API}/signin`, {
         method: 'post',
         mode: 'cors',
         cache: 'no-cache',
